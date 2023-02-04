@@ -11,4 +11,6 @@ Concatenative languages, which are normally stack-based, are similar to many fun
 
 Listack is a pun on List and Stack based programming. It was created by McChuck and implemented in Python 3.10 in January 2023.
 
+The current version is 0.35, 3 February 2023.
+
 https://esolangs.org/wiki/Listack
