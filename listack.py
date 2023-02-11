@@ -1,4 +1,4 @@
-# Listack v0.36
+# Listack v0.37
 # listack.py
 # main program with execution loop
 # Invoke as: python listack.py target_file.ls [debug]
