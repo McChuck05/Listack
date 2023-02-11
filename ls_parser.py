@@ -1,4 +1,4 @@
-# Listack v0.36
+# Listack v0.37
 # ls_parser.py
 # main parser for target files
 # Copyright McChuck, 2023
