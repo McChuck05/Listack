@@ -1,4 +1,4 @@
-# Listack v0.36
+# Listack v0.37
 # ls_helpers.py
 # very basic helper functions
 # Copyright McChuck, 2023
