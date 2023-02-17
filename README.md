@@ -13,6 +13,6 @@ Listack is a pun on List and Stack based programming. It was created by McChuck 
 
 The current version is 0.38, 17 February 2023.
 
-Invoke with:  python listack.py code_file_to_run.ls [debug] [verbose]
+Invoke with:  python listack.py code_file_to_run.ls[p] [debug] [verbose]
 
 https://esolangs.org/wiki/Listack
