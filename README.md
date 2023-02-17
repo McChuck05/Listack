@@ -15,7 +15,7 @@ The current version is 0.38, 17 February 2023.
 
 New:
 
-	Parens () are now "collections", which stand in for either lists or blocks to enhance readibility.
+	Parens () are now "collections", which stand in for either lists or blocks to enhance readability.
 	Scope is now opened with |> and closed with <|.
 		False |> will move the entire stack into the new scope.
 		True |> will *copy* the entire stack into the new scope.
