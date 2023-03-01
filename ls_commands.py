@@ -515,7 +515,7 @@ class ls_commands:
         if self.future[0] == "_end_loop_":
             self.pop_fut()
         self.meta_fut([2, 0, "%a iff {%b _begin_loop_ #a #b .while _end_loop_}"])
-        # 'cont' and 'break' require 'begin_while' and '_end_loop_'
+        # 'cont' and 'break' require '_begin_loop_' and '_end_loop_'
 
     def do_while_pre(self):  # prefix WHILE:       while: condition body
         self.meta_fut([0, 2, "%A iff {%B _begin_loop_ #A #B .while _end_loop_}"])
