@@ -20,7 +20,8 @@ def do_while(self):    # postfix WHILE      condition body .while
     self.check_types("while", [["block", "coll"], "block"])
     if self.future[0] == "\_end_loop_":
         self.pop_fut()
-    self.meta_fut([2, 0, "%a iff {%b \_begin_loop_ #a #b .while \_end_loop_}"])```
+    self.meta_fut([2, 0, "%a iff {%b \_begin_loop_ #a #b .while \_end_loop_}"])
+```
         
 Invoke with:  python listack.py code_file_to_run.ls[p] [debug] [verbose]
 
