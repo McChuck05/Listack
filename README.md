@@ -11,7 +11,8 @@ Concatenative languages, which are normally stack-based, are similar to many fun
 
 Listack is a pun on List and Stack based programming. It was created by McChuck and implemented in Python 3.10 in January 2023.
 
-The current version is 0.3.8.1, 25 February 2023.  What's new:  Loops made more generic (_start_loop_ and _end_loop_), so break and cont work better.
+The current version is 0.3.8.1, 25 February 2023.  What's new:
+*  Loops made more generic (_start_loop_ and _end_loop_), so break and cont work better with other looping functions.
 
 Invoke with:  python listack.py code_file_to_run.ls[p] [debug] [verbose]
 
