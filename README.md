@@ -13,6 +13,7 @@ Listack is a pun on List and Stack based programming. It was created by McChuck 
 
 The current version is 0.3.8.1, 25 February 2023.  What's new:
 *  While and until loops made more generic, so break and cont work better with other functions.
+*  The Meta for postfix while is now:  [2, 0, "%a iff {%b _begin_loop_ #a #b .while _end_loop_}"]
 
 Invoke with:  python listack.py code_file_to_run.ls[p] [debug] [verbose]
 
