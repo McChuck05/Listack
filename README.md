@@ -15,12 +15,12 @@ The current version is 0.3.8.1, 25 February 2023.  What's new:
 *  While and until loops made more generic, so break and cont work better with other functions.
 *  Example:  
     def do_while(self):    # postfix WHILE      condition body .while
-            self.check_stack("while", 2)
-            self.check_types("while", [["block", "coll"], "block"])
-            if self.future[0] == "_end_loop_":
-                self.pop_fut()
-            self.meta_fut([2, 0, "%a iff {%b _begin_loop_ #a #b .while _end_loop_}"])
-
+        self.check_stack("while", 2)
+        self.check_types("while", [["block", "coll"], "block"])
+        if self.future[0] == "\_end_loop_":
+            self.pop_fut()
+        self.meta_fut([2, 0, "%a iff {%b \_begin_loop_ #a #b .while \_end_loop_}"])
+        
 Invoke with:  python listack.py code_file_to_run.ls[p] [debug] [verbose]
 
 https://esolangs.org/wiki/Listack
