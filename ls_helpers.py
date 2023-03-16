@@ -468,12 +468,12 @@ def my_print(seq, print_quotes = False):
                 print(end=", ")
         print(f"{close_symbol}", end="")
 
-
-
     elif is_string(seq) and print_quotes:
         print(f'"{seq}"', end="")
+    
     else:
         print(f"{seq}", end="")
+    print(end="", flush=True)
 
 def my_println(seq, print_quotes = False):
     my_print(seq, print_quotes)
