@@ -11,7 +11,7 @@ Concatenative languages, which are normally stack-based, are similar to many fun
 
 Listack is a pun on List and Stack based programming. It was created by McChuck and originally implemented in Python 3.10 in January 2023.
 
-The current version is 0.4.0.0, 20 May 2023, written in Nim 1.6.12.
+The current version is 0.4.0.0, 20 May 2023, written in Nim 1.6.10.
 
 Invoke with:  ./listack code_file_to_run.ls
 or use the interactive repl:  ./listack
