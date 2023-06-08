@@ -9,9 +9,9 @@ Listack is stackless in that the implementation is very nearly a Turing machine,
 
 Concatenative languages, which are normally stack-based, are similar to many functional languages in that function composition is accomplished by typing one command after another. The output from one word is the input to the next word via the data stack, much like the unix pipe ("|") command.
 
-Listack is a pun on List and Stack based programming. It was created by McChuck and originally implemented in Python 3.10 in January 2023.
+Listack is a portmanteau of List and Stack based programming. It was created by McChuck and originally implemented in Python 3.10 in January 2023.
 
-The current version is Listack v0.4.0.3, 23 May 2023, written in Nim 1.6.12.
+The current version is Listack v0.4.0.4, 8 June 2023, written in Nim 1.6.12.
 
 Invoke with:  ./listack code_file_to_run.ls
 or use the interactive repl:  ./listack
