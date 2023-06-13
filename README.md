@@ -12,6 +12,7 @@ Concatenative languages, which are normally stack-based, are similar to many fun
 Listack is a portmanteau of List and Stack based programming. It was created by Charles Fout and originally implemented in Python 3.10 in January 2023.
 
 The current version is Listack v0.4.0.6, 13 June 2023, written in Nim 1.6.12.
+What's new:  Simplified type system, added user-customizable combined types.
 
 Invoke with:  ./listack code_file_to_run.ls
 or use the interactive repl:  ./listack
