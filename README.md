@@ -17,7 +17,8 @@ Invoke with:
   ./listack code_file_to_run.ls  
 options: -debug -verbose
 
-Or use the interactive repl:  ./listack
+Or use the interactive repl:    
+  ./listack
 
 
 
