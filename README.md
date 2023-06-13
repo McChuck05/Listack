@@ -16,7 +16,7 @@ What's new:  Simplified type system, added user-customizable combined types.
 
 Invoke with:  
   ./listack code_file_to_run.ls
-  options: -debug -verbose
+    options: -debug -verbose
 or use the interactive repl:  
   ./listack
 
