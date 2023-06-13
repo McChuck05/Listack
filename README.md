@@ -13,9 +13,11 @@ Listack is a portmanteau of List and Stack based programming. It was created by 
 
 The current version is Listack v0.4.0.6, 13 June 2023, written in Nim 1.6.12.
 
-Invoke with:  ./listack code_file_to_run.ls
-or use the interactive repl:  ./listack
+Invoke with:  
+  ./listack code_file_to_run.ls
 options: -debug -verbose
+Or use the interactive repl:  ./listack
+
 
 
 https://esolangs.org/wiki/Listack
