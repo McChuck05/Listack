@@ -13,6 +13,8 @@ Listack is a portmanteau of List and Stack based programming. It was created by 
 
 The current version is Listack v0.4.0.7, 16 June 2023, written in Nim 1.6.12.
 
+What's new:  added when, slice; corrected out of bounds behavior of extract; corrected Otherwise error message.
+
 Invoke with:  
   ./listack code_file_to_run.ls  
 options: -debug -verbose
