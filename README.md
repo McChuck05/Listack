@@ -3,7 +3,12 @@ Listack: a symmetric, stackless, stack-based, concatenative  language
 
 Listack is an experiment in making a symmetric, stackless, stack-based, concatenative language. Listack was inspired by both Factor and Falsish , which is itself a variant of False inspired by fish ><>.  The user-defined type system was inspired by Euphoria.
 
-Listack is symmetric in that most command words are available in a prefix, infix, and postfix form. The user can choose which forms to use, and can thus mimic Lisp (prefix), Forth (postfix), or use a mix of all three forms in the style of most imperative languages. The prefix and infix forms are automatically created from the base postfix form depending on the number of arguments the word has. 
+Listack is symmetric in that most command words are available in a prefix, infix, and postfix form. The user can choose which forms to use, and can thus mimic Lisp (prefix), Forth (postfix), or use a mix of all three forms in the style of most imperative languages. The prefix and infix forms are automatically created from the base postfix form depending on the number of arguments the word has. The following are all equivalent, valid constructs:
+
+    1 + 2
+    +: 1 2
+    1 2.+
+    +(1,2)
 
 Listack is stackless in that all functions are inline functions.  The implementation splits the difference between a Turing machine and the lambda calculus, with a stack for past data, the current command, and then a queue for future commands. Commands are read from the front of the queue, and the data computed by these commands is pushed onto the stack, creating, in effect, an infinite tape. As such, the language is implemented as a simple loop with no recursion and no return stack. Invocations of functions ("words") merely place the function definition on the front of the command queue. Loops are implemented by repeatedly copying the body of the loop back onto the front of the command queue. There is no call, no return, no goto, no instruction pointer, only adding words to the front of the command queue.
 
