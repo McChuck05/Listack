@@ -5,8 +5,8 @@ Listack is an experiment in making a symmetric, stackless, stack-based, concaten
 
 Listack is symmetric in that most command words are available in a prefix, infix, and postfix form. The user can choose which forms to use, and can thus mimic Lisp (prefix), Forth (postfix), or use a mix of all three forms in the style of most imperative languages. The prefix and infix forms are automatically created from the base postfix form depending on the number of arguments the word has. The following are all equivalent, valid constructs:
 
-    1 + 2
-    +: 1 2
+    1+2
+    +:1 2
     1 2.+
     +(1,2)
 
