@@ -28,7 +28,6 @@ Or use the interactive repl:
   ./listack
 
 
-
 https://esolangs.org/wiki/Listack
 
 https://concatenative.org/wiki/view/Listack
