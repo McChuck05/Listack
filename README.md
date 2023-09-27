@@ -3,7 +3,7 @@ Listack: a symmetric, stackless, polymorphic, concatenative language
 
 Listack is an experiment in making a symmetric, stackless, polymorphic, concatenative language. Listack was inspired by Factor, False, and fish ><>.  The user-defined type system was inspired by Euphoria.
 
-Listack is symmetric through the use of universal function call syntax.  Most command words are available in a prefix, infix, postfix, and "callable" form. The user can choose which forms to use, and can thus mimic Lisp (prefix), Forth (postfix), or use a mix of all four forms in the style of most imperative languages. The prefix and infix forms are automatically created from the base postfix form depending on the number of arguments the word has. (There are also a limited number of immediate words.)  The following are all equivalent, valid constructs:
+Listack is symmetric through the use of a uniform function call syntax.  Most command words are available in a prefix, infix, postfix, and "callable" form. The user can choose which forms to use, and can thus mimic Lisp (prefix), Forth (postfix), or use a mix of all four forms in the style of most imperative languages. The prefix and infix forms are automatically created from the base postfix form depending on the number of arguments the word has. (There are also a limited number of immediate words.)  The following are all equivalent, valid constructs:
 
     +: 1 2
     1+2
