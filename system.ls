@@ -457,6 +457,9 @@ def: "flatten" [Coll]
 def: "stomp" [Coll] 
   {dup empty swap {Coll? iff {stomp} .concat} .each}
 
+def_immediate: "both" [Any, Any, Executable]
+  {dup @>_apply_f .eval swap @<_apply_f .eval swap}
+
 _reset_namespace
 # end of system
    
