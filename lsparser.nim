@@ -3,10 +3,11 @@
 ## All rights reserved.
 ## Language:  Nim 1.6.12, Linux formatted
 
+import flexdeq
 import lstypes, lstypehelpers, lstypeprint, lsconfig
-import std/strutils, std/deques, std/terminal, std/tables
+import std/strutils, std/terminal, std/tables
 
-proc parseCommands*(originalText: string, source: string = "default", debug: bool = false, verbose: bool = false): LsSeq = 
+proc parseCommands*(env: Environment, originalText: string, source: string = "default", debug: bool = false, verbose: bool = false): LsSeq = 
   var 
     parsed: LsSeq
     text: string = originalText & "   "   # fixes a lot of problems that would occur with looking ahead while parsing
@@ -93,6 +94,10 @@ proc parseCommands*(originalText: string, source: string = "default", debug: boo
         thisChar = getNext()
       advance()
       if current < textLen:
+        thisChar = getNext()
+    elif peeknext() notin Whitespace:   # use #comment for single word comment, replaces sugar words
+      thisChar = getNext()
+      while thisChar notin whiteComma and current < textLen:
         thisChar = getNext()
     else:
       while thischar != '\n' and current < textLen-1:
@@ -227,7 +232,7 @@ proc parseCommands*(originalText: string, source: string = "default", debug: boo
       let this: LsSeq = parseStack.pop()
       if len(this) != 3:
         dofail("Object closing error.  Objects must have format: ($ type [arguments] contents $).", $this)
-      elif this[1].nodeType notIn typeMap["Coll"]:
+      elif this[1].nodeType notIn env.typeMap["Coll"]:
         dofail("Object closing error.  Object args (" & $this[1] & ") must be a collection", $this)
       if this[0].nodeType == String:
         node = newObjectNode(this[0].stringVal, this[1].seqVal, this[2])
@@ -244,7 +249,7 @@ proc parseCommands*(originalText: string, source: string = "default", debug: boo
         var callingWord = parseStack[^1].popLast()
         if callingword.nodeType == Word:
           callingword.wordFix = Postfix
-          node.addLast(callingWord)
+          node.addLast(env, callingWord)
           if callingWord.deferred:
             callingWord.deferred = false
             node.deferred = true
@@ -285,9 +290,9 @@ proc parseCommands*(originalText: string, source: string = "default", debug: boo
       if thischar == ':':
         node.wordFix = Prefix
         thisChar = getNext()
-      if buildWord in sugar:
+      if buildWord in env.sugar:
         node = newNullNode()
-      elif buildword in immediates:
+      elif buildword in env.immediates:
         if debug and verbose: echo buildWord, " is Immediate"
         node.wordFix = Immediate
     else:
@@ -304,7 +309,7 @@ proc parseCommands*(originalText: string, source: string = "default", debug: boo
         node.wordNameSpace = buildNameSpace
       else:
         doFail("NameSpace error, must begin with a letter", $thisChar)
-    if node.nodeType == Word and typeMap.hasKey(node.wordVal):
+    if node.nodeType == Word and env.typeMap.hasKey(node.wordVal):
     # if node.nodeType == Word and node.wordVal in PseudoTypes: # convert pseudotype to string so it works with type checker
       node = newStringNode(node.wordVal)
 
@@ -473,48 +478,3 @@ proc parseCommands*(originalText: string, source: string = "default", debug: boo
   except LsTypeError:
     echo getCurrentExceptionMsg()
     raise
-
-
-when isMainModule:
-  echo "\n\n"
-  let test1 = "1 -4, 6.8\n.2_3,-.78,\n,[2(%4:8{6 ($2:Float:8.0, 23.19$)}|$ nameis, : string, :'Indigo Montoya'$| 2%)4 6]8 0\n(* Int : 5 7_9_ *) 867_5309 \"867\" '5309' \"don't\" 'can\\'t' \"should\nn\\\"t\"`Q `\' `\n ``"
-  var seq1 = parseCommands(test1)
-  echo "test1"
-  echo seq1
-  prettyPrintLn(seq1)
-  let test2 = " 123 -321 3.14159\n-2.718281828 [.123 (% 3 : .321\n{5678 910}4713154%)] .456-5-.767 |$TestObject: INT: 42 $| #987654321 \n867.530_9"
-  var seq2 = parseCommands(test2)
-  echo "\n test2"
-  echo seq2
-  prettyPrintLn(seq2)
-  let test3 = "word1 word2 [.word3 {word4:} ]\\word5 \\ word6 \\.word7 \\word8 123word9.word10.1234.word11@!name1\\@<name2 \\ @>name3@!name4 do &^% .then .+= else: *:"
-  let seq3 = parseCommands(test3)
-  echo "\n test3"
-  echo seq3
-  prettyPrintLn(seq3)
-  echo ""
-  let test4 = """word1(word2 word3)1|>scope1 scope2<|2 @#a @%A @#metaWord (! word4 word5 !) 
-  (a|>b c<|d)[]{}()|><| |>e<|(%:f,g h%)
-  ($:object:|$name:String:'This is my name'$|$)
-  (*Char:`a*)"""
-  let seq4 = parseCommands(test4)
-  echo "\n test4"
-  echo seq4
-  prettyPrintLn(seq4)
-  let test5 = """ |$ListName:List:[1 2 |> a b <| {`c "d"} 'e' |$AnyObjectName:any:[ |$InnerObjectName:any:2.718281828 $| "should work" |> 123 abc <| (!!)] $| 456 ] $|"""
-  echo "\ntest5"
-  let seq5 = parseCommands(test5)
-  echo seq5
-  prettyPrintLn(seq5)
-  let test6 = "|* int: 357 *| |*seq:(abc 123 456.0 'def')*| |*Custom: |*STRING:'this should work' *| *| true False TRUE fAlSe (!1+2!) +_2"
-  echo "\ntest6: custom"
-  let seq6 = parseCommands(test6)
-  echo seq6
-  prettyPrintLn(seq6)
-  let test7 = "word1;NameSpace_A word2:;nameSpace_2.word3;namespace3@%A anyword;b1_ this;works? nil <thing1> _<thing2> <_thing3> thing4> query?"
-  echo "\ntest7: namespace"
-  let seq7 = parseCommands(test7)
-  echo seq7
-  prettyPrintLn(seq7)
-  echo "\n\n"
-
