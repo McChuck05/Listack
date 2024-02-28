@@ -13,7 +13,7 @@ Listack is a portmanteau of List and Stack based programming. It was created by 
 
 The current version is Listack v0.4.0.8, 21 June 2023, written in Nim 1.6.12.
 
-What's new:  flatten, stomp, min, max, word_def, words, pairwise, map_reduce, empty, empty?
+What's new:  single word comment (future replacement for sugar words)
 
 Invoke with:  
   ./listack code_file_to_run.ls  
