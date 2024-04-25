@@ -10,15 +10,15 @@ Listack is symmetric through the use of a uniform function call syntax.  Most co
     1 2.+
     +(1,2)
 
-Listack is stackless in that all functions are inline functions.  The implementation splits the difference between a Turing machine and the lambda calculus, with a stack for past data, the current command, and then a queue for future commands. Commands are read from the front of the queue, and the data computed by these commands is pushed onto the stack, creating, in effect, an infinite tape. As such, the language is implemented as a simple loop with no recursion and no return stack. Invocations of functions ("words") merely place the function definition on the front of the command queue. Loops are implemented by repeatedly copying the body of the loop back onto the front of the command queue. There is no call, no return, no goto, no instruction pointer, only adding words to the front of the command queue.
+Listack is stackless in that all functions are inline functions.  The implementation splits the difference between a Turing machine and the lambda calculus, with a stack for past data, the current command, and then a queue for future commands. Commands are read from the front of the queue, and the data computed by these commands is pushed onto the stack, creating, in effect, an infinite tape. As such, the language is implemented as a simple loop with no recursion and no return stack. Invocations of functions ("words") merely place the function definition on the front of the command queue. Loops are implemented by repeatedly copying the body of the loop back onto the front of the command queue. There is no call, no return, no goto, no instruction pointer, only adding words to the front of the command queue.  (Which makes it not really a queue, but you get what I mean.)
 
 Listack is fully polymorphic within the restriction of maintaining arity (the number of arguments to a function) by means of multiple dispatch.  For example, '+' works with two integers, floats, mixed numbers, numbers and blocks, strings, characters, strings and characters, or characters and integers.  A namespace system is used to separate functions with similar names but different meanings or arities.  "Otherwise" is a catch-all type.
 
 Concatenative languages, which are normally stack-based, are functional languages, where function composition is accomplished by simply typing one command after another. The output from one word is the input to the next word via the data stack, much like the unix pipe ("|") command.  Functions are first class data constructs (data are functions and functions are data), and anonymous functions (quotations/blocks) are the heart of the system.  Listack is an "impure" functional language, because side effects are readily available.  (Note that alterations to the data stack do not count as side effects, so your code can be as "pure" as you want it to be.)
 
-Listack is a portmanteau of List and Stack based programming. It was created by Charles Fout and originally implemented in Python 3.10 in January 2023.
+Listack is a portmanteau of List and Stack based programming. It was created by Charles Fout and originally implemented (rather pororly) in Python 3.10 in January 2023.
 
-The current version is Listack v0.4.0.8.1, 28 February 2024, written in Nim 2.0.2 (fully compatible with 1.6.12).
+The current version is Listack v0.4.0.8.1, 28 February 2024, written in Nim 1.6.12 (fully compatible with 2.0.2).
 
 Invoke with:  
   ./listack code_file_to_run.ls  
