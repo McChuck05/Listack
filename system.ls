@@ -191,10 +191,10 @@ def: "times*" [Int, Executable] {swap .times*}
 # for: [{initial state}{continuing condition}{incremental change}] {body to execute}
 def: "for" [Coll, Executable]    
   {@>_while_body .len* 3 .=   # if
-    { .first* swap    dump # stack is now: {init} [{cont cond} {inc change}]
-      .last* @<_while_body swap .concat @>_while_body   dump  # added incremental change to end of body, stack is now: {init} [{cont cond}]
-      .last @>_while_cond   dump   # stack is now: {init}
-      .eval   dump  # stack is now: init
+    { .first* swap     # stack is now: {init} [{cont cond} {inc change}]
+      .last* @<_while_body swap .concat @>_while_body     # added incremental change to end of body, stack is now: {init} [{cont cond}]
+      .last @>_while_cond      # stack is now: {init}
+      .eval     # stack is now: init
       _while_ _end_loop_}   # the _while_cond and _while_body stacks are already set, so call _while_ instead of .while
     else {"for error: [{initial state}{incremental change}{halting condition}] expected but not found" set_err 
       @<_while_body drop} 
