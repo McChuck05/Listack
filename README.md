@@ -23,9 +23,9 @@ Compile with:  ` nim c --deepcopy:on -d:release listack.nim `
     
 Invoke with:  ` ./listack code_file_to_run.ls  `
 
-Options: ` -debug -verbose `
-
 Or use the interactive repl: ` ./listack `
+
+Options: ` -debug -verbose `
 
 https://esolangs.org/wiki/Listack
 
