@@ -19,7 +19,7 @@ Concatenative languages, also known as stack-based, are functional languages, wh
 
 The current version is Listack v0.4.1.0.0, uploaded 20 November 2026, written in Nim 2.4.2.
 
-Compile with:  ` nim c --deepcopy:on listack.nim `
+Compile with:  ` nim c --deepcopy:on -d:release listack.nim `
     
 Invoke with:  ` ./listack code_file_to_run.ls  `
 
